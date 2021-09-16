@@ -9,6 +9,7 @@ public class UserRegistration {
 	public final String lastName = "[A-Z][a-z]{2,}$";
 	public final String email = "[a-z0-9_]*[.a-z0-9_]*?@[a-z]*.(co|com)(.[a-z])?$";
 	public final String phNo = "^[0-9]{2}\\s[0-9]{10}$";
+	public final String password = "^[a-z]{8,}";
 	
 	public static void main (String[] args) {
 		UserRegistration user= new UserRegistration();
@@ -19,7 +20,9 @@ public class UserRegistration {
 		System.out.println("Enter your email id: ");
 		String userEmail = sc.next();
 		System.out.println("Enter your Phone number: ");
-		String userPhNo = sc.nextLine();
+		String userPhNo = sc.next();
+		System.out.println("Enter your Password: ");
+		String userPassword = sc.next();
 		
 		if(user.firstName(userFirstName))
 		{
@@ -47,8 +50,16 @@ public class UserRegistration {
 			System.out.println("The Phone number entered is Valid.");
 		}
 		else {
-			System.out.println(userPhNo);
+			
 			System.out.println("Phone number is Invalid.");
+		}
+		if(user.password(userPassword))
+		{
+			System.out.println("The Password entered is Valid.");
+		}
+		else {
+			
+			System.out.println("Password is Invalid.");
 		}
 	}
 	
@@ -68,5 +79,9 @@ public class UserRegistration {
 	public boolean phNo(String userPhNo) {
 		Pattern pattern = Pattern.compile(phNo);
 		return pattern.matches(phNo, userPhNo);
+	}
+	public boolean password(String userPassword) {
+		Pattern pattern = Pattern.compile(phNo);
+		return pattern.matches(password, userPassword);
 	}
 }
