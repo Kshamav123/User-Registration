@@ -7,81 +7,86 @@ public class UserRegistration {
 	public static Scanner sc = new Scanner(System.in);
 	public final String firstName = "[A-Z][a-z]{2,}$";
 	public final String lastName = "[A-Z][a-z]{2,}$";
-	public final String email = "[a-z0-9_]*[.a-z0-9_]*?@[a-z]*.(co|com)(.[a-z])?$";
-	public final String phNo = "^[0-9]{2}\\s[0-9]{10}$";
-	public final String password = "^[a-z]{8,}";
+	public final String email = "^[a-z0-9]+[-.+_a-z0-9]*@[a-z0-9]+[.][co|com]+[.a-z]*{2}$";
+	public final String phNo = "^[0-9]{2}[\\s][0-9]{10}$";
+	public final String password =  "^(?=.*[~!@#$%^&*-+=()])(?=.*[0-9])(?=.*[A-Z]).{8,}$";
+			                     
+			                 
+	
 	
 	public static void main (String[] args) {
 		UserRegistration user= new UserRegistration();
 		System.out.println("Enter your First Name: ");
-		String userFirstName = sc.next();
+		String userFirstName = sc.nextLine();
 		System.out.println("Enter your Last Name: ");
-		String userLastName = sc.next();
+		String userLastName = sc.nextLine();
 		System.out.println("Enter your email id: ");
-		String userEmail = sc.next();
+		String userEmail = sc.nextLine();
+	// final String userPhNo = "91 2342678464";
 		System.out.println("Enter your Phone number: ");
-		String userPhNo = sc.next();
+		String userPhNo = sc.nextLine();
 		System.out.println("Enter your Password: ");
-		String userPassword = sc.next();
+		String userPassword = sc.nextLine();
+		sc.close();
 		
-		if(user.firstName(userFirstName))
+		if(user.firstNameVal(userFirstName))
 		{
 			System.out.println("The First Name entered is Valid.");
 		}
 		else {
 			System.out.println("First name isInvalid.");
 		}
-		if(user.lastName(userLastName))
+		if(user.lastNameVal(userLastName))
 		{
 			System.out.println("The Last Name entered is Valid.");
 		}
 		else {
 			System.out.println("Last name is Invalid.");
 		}
-		if(user.email(userEmail))
+		if(user.emailVal(userEmail))
 		{
 			System.out.println("The Email entered is Valid.");
 		}
 		else {
 			System.out.println("Email is Invalid.");
 		}
-		if(user.phNo(userPhNo))
+		if(user.phNoVal(userPhNo))
 		{
 			System.out.println("The Phone number entered is Valid.");
 		}
 		else {
-			
+			System.out.println(userPhNo);
 			System.out.println("Phone number is Invalid.");
 		}
-		if(user.password(userPassword))
+		if(user.passwordVal(userPassword))
 		{
 			System.out.println("The Password entered is Valid.");
 		}
 		else {
-			
+			System.out.println(userPassword);
 			System.out.println("Password is Invalid.");
 		}
 	}
 	
-	public boolean firstName(String userFirstName) {
+	public boolean firstNameVal(String userFirstName) {
 		Pattern pattern = Pattern.compile(firstName);
 		return pattern.matches(firstName, userFirstName);
 		
 	}
-	public boolean lastName(String userLastName) {
+	public boolean lastNameVal(String userLastName) {
 		Pattern pattern = Pattern.compile(lastName);
 		return pattern.matches(lastName, userLastName);
 	}
-	public boolean email(String userEmail) {
+	public boolean emailVal(String userEmail) {
 		Pattern pattern = Pattern.compile(email);
 		return pattern.matches(email, userEmail);
 	}
-	public boolean phNo(String userPhNo) {
+	public boolean phNoVal(String userPhNo) {
 		Pattern pattern = Pattern.compile(phNo);
 		return pattern.matches(phNo, userPhNo);
 	}
-	public boolean password(String userPassword) {
-		Pattern pattern = Pattern.compile(phNo);
+	public boolean passwordVal(String userPassword) {
+		Pattern pattern = Pattern.compile(password);
 		return pattern.matches(password, userPassword);
 	}
 }
