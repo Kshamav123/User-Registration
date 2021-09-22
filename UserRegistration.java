@@ -12,7 +12,7 @@ public class UserRegistration {
 	public final String phNo = "^[0-9]{2}[\\s][0-9]{10}$";
 	public final String password = "^(?=.*[~!@#$%^&*-+=()])(?=.*[0-9])(?=.*[A-Z]).{8,}$";
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InvalidUserDetailException {
 		UserRegistration user = new UserRegistration();
 		System.out.println("Enter your First Name: ");
 		String userFirstName = sc.nextLine();
@@ -58,7 +58,7 @@ public class UserRegistration {
  * @param userFirstName it is the user input
  * @return returs boolean
  */
-	public boolean firstNameVal(String userFirstName) {
+	public boolean firstNameVal(String userFirstName) throws InvalidUserDetailException{
 		Pattern pattern = Pattern.compile(firstName);
 		return pattern.matches(firstName, userFirstName);
 
@@ -68,7 +68,7 @@ public class UserRegistration {
  * @param userLastName it is the user input
  * @return returns boolean
  */
-	public boolean lastNameVal(String userLastName) {
+	public boolean lastNameVal(String userLastName) throws InvalidUserDetailException{
 		Pattern pattern = Pattern.compile(lastName);
 		return pattern.matches(lastName, userLastName);
 	}
@@ -77,7 +77,7 @@ public class UserRegistration {
  * @param userEmail is the user input
  * @return returns boolean
  */
-	public boolean emailVal(String userEmail) {
+	public boolean emailVal(String userEmail) throws InvalidUserDetailException{
 		Pattern pattern = Pattern.compile(email);
 		return pattern.matches(email, userEmail);
 	}
@@ -87,7 +87,7 @@ public class UserRegistration {
 	 * @return returns boolean
 	 */
 
-	public boolean phNoVal(String userPhNo) {
+	public boolean phNoVal(String userPhNo) throws InvalidUserDetailException{
 		Pattern pattern = Pattern.compile(phNo);
 		return pattern.matches(phNo, userPhNo);
 	}
@@ -97,7 +97,7 @@ public class UserRegistration {
 	 * @return returns boolean
 	 */
 
-	public boolean passwordVal(String userPassword) {
+	public boolean passwordVal(String userPassword) throws InvalidUserDetailException{
 		Pattern pattern = Pattern.compile(password);
 		return pattern.matches(password, userPassword);
 	}
