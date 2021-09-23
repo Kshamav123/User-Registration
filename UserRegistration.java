@@ -3,7 +3,6 @@ package com.userregistration;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-
 public class UserRegistration {
 	public static Scanner sc = new Scanner(System.in);
 	public final String firstName = "[A-Z][a-z]{2,}$";
@@ -52,53 +51,89 @@ public class UserRegistration {
 			System.out.println("Password is Invalid.");
 		}
 	}
-	
-/**
- * This method is used to match the first name
- * @param userFirstName it is the user input
- * @return returs boolean
- */
-	public boolean firstNameVal(String userFirstName) throws InvalidUserDetailException{
+
+	/**
+	 * This method is used to match the first name
+	 * 
+	 * @param userFirstName it is the user input
+	 * @return returs boolean
+	 */
+	public boolean firstNameVal(String userFirstName) throws InvalidUserDetailException {
 		Pattern pattern = Pattern.compile(firstName);
-		return pattern.matches(firstName, userFirstName);
+		boolean ans = pattern.matches(firstName, userFirstName);
+		if (ans) {
+			return true;
+		} else {
+			throw new InvalidUserDetailException("Invalid");
+
+		}
+	}
+
+	/**
+	 * This method is used to match the last name
+	 * 
+	 * @param userLastName it is the user input
+	 * @return returns boolean
+	 */
+	public boolean lastNameVal(String userLastName) throws InvalidUserDetailException {
+		Pattern pattern = Pattern.compile(lastName);
+		boolean ans = pattern.matches(lastName, userLastName);
+		if (ans) {
+			return true;
+		} else {
+			throw new InvalidUserDetailException("Invalid");
+		}
+	}
+
+	/**
+	 * This method matches the emailaddress
+	 * 
+	 * @param userEmail is the user input
+	 * @return returns boolean
+	 */
+	public boolean emailVal(String userEmail) throws InvalidUserDetailException {
+		Pattern pattern = Pattern.compile(email);
+		boolean ans = pattern.matches(email, userEmail);
+		if (ans) {
+			return true;
+		} else {
+			throw new InvalidUserDetailException("Invalid");
+		}
 
 	}
-/**
- * This method is used to match the last name
- * @param userLastName it is the user input
- * @return returns boolean
- */
-	public boolean lastNameVal(String userLastName) throws InvalidUserDetailException{
-		Pattern pattern = Pattern.compile(lastName);
-		return pattern.matches(lastName, userLastName);
-	}
- /**
- * This method matches the emailaddress
- * @param userEmail is the user input
- * @return returns boolean
- */
-	public boolean emailVal(String userEmail) throws InvalidUserDetailException{
-		Pattern pattern = Pattern.compile(email);
-		return pattern.matches(email, userEmail);
-	}
+
 	/**
 	 * This method matches the Phone number
+	 * 
 	 * @param userPhNo is the user input
 	 * @return returns boolean
 	 */
 
-	public boolean phNoVal(String userPhNo) throws InvalidUserDetailException{
+	public boolean phNoVal(String userPhNo) throws InvalidUserDetailException {
 		Pattern pattern = Pattern.compile(phNo);
-		return pattern.matches(phNo, userPhNo);
+		boolean ans = pattern.matches(phNo, userPhNo);
+		if (ans) {
+			return true;
+		} else {
+			throw new InvalidUserDetailException("Invalid");
+		}
+
 	}
+
 	/**
 	 * This method matches the Password
+	 * 
 	 * @param userPassword is the user input
 	 * @return returns boolean
 	 */
 
-	public boolean passwordVal(String userPassword) throws InvalidUserDetailException{
+	public boolean passwordVal(String userPassword) throws InvalidUserDetailException {
 		Pattern pattern = Pattern.compile(password);
-		return pattern.matches(password, userPassword);
+		boolean ans = pattern.matches(password, userPassword);
+		if (ans) {
+			return true;
+		} else {
+			throw new InvalidUserDetailException("Invalid");
+		}
 	}
 }
