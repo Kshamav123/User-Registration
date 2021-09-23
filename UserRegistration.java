@@ -51,6 +51,14 @@ public class UserRegistration {
 			System.out.println("Password is Invalid.");
 		}
 	}
+	
+	
+
+	IValidateUserDetail firstNameVallambda = (userFirstName) -> Pattern.matches(firstName, userFirstName);
+	IValidateUserDetail lastNameVallambda = (userLastName) -> Pattern.matches(lastName, userLastName);
+	IValidateUserDetail phNoVallambda = (userPhNo) -> Pattern.matches(phNo, userPhNo);
+	IValidateUserDetail emailVallambda = (userEmail) -> Pattern.matches(email, userEmail);
+	IValidateUserDetail passwordVallambda = (userPassword) -> Pattern.matches(password, userPassword);
 
 	/**
 	 * This method is used to match the first name
@@ -64,7 +72,7 @@ public class UserRegistration {
 		if (ans) {
 			return true;
 		} else {
-			throw new InvalidUserDetailException("Invalid");
+			throw new InvalidUserDetailException("Invalid first name");
 
 		}
 	}
@@ -81,7 +89,7 @@ public class UserRegistration {
 		if (ans) {
 			return true;
 		} else {
-			throw new InvalidUserDetailException("Invalid");
+			throw new InvalidUserDetailException("Invalid last name");
 		}
 	}
 
@@ -97,7 +105,7 @@ public class UserRegistration {
 		if (ans) {
 			return true;
 		} else {
-			throw new InvalidUserDetailException("Invalid");
+			throw new InvalidUserDetailException("Invalid email address");
 		}
 
 	}
@@ -115,7 +123,7 @@ public class UserRegistration {
 		if (ans) {
 			return true;
 		} else {
-			throw new InvalidUserDetailException("Invalid");
+			throw new InvalidUserDetailException("Invalid phone number");
 		}
 
 	}
@@ -133,7 +141,7 @@ public class UserRegistration {
 		if (ans) {
 			return true;
 		} else {
-			throw new InvalidUserDetailException("Invalid");
+			throw new InvalidUserDetailException("Invalid password");
 		}
 	}
 }
